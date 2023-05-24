@@ -1,0 +1,111 @@
+<!-- <div class="spin-wheel-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Spin Wheel</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="spin-wheel">
+        <div *ngFor="let part of spinWheelParts; let i = index" class="spin-wheel-part" [style.transform]="'rotate(' + (360 / spinWheelParts.length * i) + 'deg)'" [ngClass]="{'odd': i % 2 === 0, 'even': i % 2 !== 0}">
+          <div class="part-label">{{ part }}</div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="spin()">Spin</button>
+    </mat-card-actions>
+  </mat-card>
+</div> -->
+
+
+
+<!-- <div class="spin-wheel-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Spin Wheel</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="spin-wheel" [class.spinning]="isSpinning">
+        <div *ngFor="let part of spinWheelParts; let i = index" class="spin-wheel-part" [style.transform]="'rotate(' + (360 / spinWheelParts.length * i) + 'deg)'" [ngClass]="{'odd': i % 2 === 0, 'even': i % 2 !== 0}">
+          <div class="part-label">{{ part }}</div>
+        </div>
+        <div class="spin-pin"></div>
+      </div>
+      <div class="triangle-up"></div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="spin()">Spin</button>
+    </mat-card-actions>
+  </mat-card>
+</div> -->
+
+
+
+<!-- <div class="spin-wheel-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Spin Wheel</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="spin-wheel" [class.spinning]="isSpinning" [style.transform]="'rotate(' + rotationAngle + 'deg)'">
+        <div class="spin-pin" [style.transform]="'rotate(' + rotationAngle + 'deg)'"></div>
+        <div *ngFor="let part of spinWheelParts; let i = index" class="spin-wheel-part" [style.transform]="'rotate(' + (360 / spinWheelParts.length * i) + 'deg)'" [ngClass]="{'odd': i % 2 === 0, 'even': i % 2 !== 0}">
+          <div class="part-label">{{ part }}</div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="isSpinning" (click)="spin()">Spin</button>
+    </mat-card-actions>
+  </mat-card>
+</div> -->
+
+
+<!-- <div class="spin-wheel-container">
+  <div class="spin-wheel">
+    <div *ngFor="let part of spinWheelParts; let i = index"
+         class="spin-wheel-part"
+         [class.odd]="i % 2 === 0"
+         [class.even]="i % 2 !== 0"
+         [style.transform]="spinInProgress ? 'rotate(360deg)' : ''">
+      <div class="part-label">{{ part }}</div>
+    </div>
+    <div class="spin-triangle" [class.spin]="spinInProgress"></div>
+  </div>
+  <button mat-raised-button color="primary" (click)="spin()" [disabled]="spinInProgress">Spin</button>
+</div> -->
+
+<div class="mainbox" id="mainbox">
+  <div class="box" id="box" [ngClass]="{'animate': isAnimating}">
+    <div class="spin-pin"></div>
+    <div class="spin-wheel">
+      <div *ngFor="let part of spinParts; let i = index" class="part" [ngClass]="{'odd': i % 2 !== 0, 'even': i % 2 === 0}">
+        <span class="font"><h5>Prize {{ part }}</h5></span>
+      </div>
+    </div>
+    <button class="spin" (click)="spin()">PLAY GAME</button>
+  </div>
+</div>
+<audio controls="controls" id="applause" type="audio/mp3"></audio>
+<audio controls="controls" id="wheel" type="audio/mp3"></audio>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

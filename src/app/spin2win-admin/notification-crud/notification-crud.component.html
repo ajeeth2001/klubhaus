@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Notification List</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="text-center">
+            <th>Notification Message</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <br>
+        <tbody>
+          <tr *ngFor="let notification of notifications">
+            <td class="col-sm-6">{{ notification.message }}</td>
+            <td class="col-sm-2">
+              <div class="form-check">
+                <input class="form-check-input text-center" type="checkbox" (ngModelChange)="changeNotificationStatus(notification)" [(ngModel)]="notification.status">
+                <label class="form-check-label" for="status">{{ notification.status ? 'Active' : 'Inactive' }}</label>
+              </div>
+            </td >
+            <td class="col-sm-4 text-center">
+              <button class="btn btn-sm btn-warning m-1 w-25" (click)="editNotification(notification)">Edit</button>&nbsp;&nbsp;
+              <button class="btn btn-sm btn-danger m-1 w-25" (click)="deleteNotification(notification)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <button class="btn btn-warning w-25 m-2" (click)="addNotification()">Add</button>
+        &nbsp;&nbsp;
+        <button class="btn btn-warning w-25 m-2" routerLink="../admin-dashboard">Cancel</button>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <h3>{{ isEditMode ? 'Edit' : 'Create' }} Notification</h3>
+      <form (ngSubmit)="saveNotification()">
+        <div class="form-group">
+          <label for="message">Message</label>
+          <input type="text" class="form-control" id="message" name="message" placeholder="Enter the message" [(ngModel)]="selectedNotification.message" required>
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select class="form-control" id="status" name="status" [(ngModel)]="selectedNotification.status" required>
+            <option [value]="true">Active</option>
+            <option [value]="false">Inactive</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Save Changes' : 'Create' }}</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelNotification()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

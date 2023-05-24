@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="col-sm-12 m-3" *ngIf="isFormActive">
+    <h3>{{ isEditMode ? 'Edit' : 'Create' }} Reward</h3>
+    <form (ngSubmit)="saveReward()">
+      <div class="form-group">
+        <label for="message">Reward Name</label>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="selectedReward.reward_name" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Code</label>
+        <input type="text" class="form-control" id="code" name="code" [(ngModel)]="selectedReward.code" required>
+      </div>
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select class="form-control" id="status" name="status" [(ngModel)]="selectedReward.status" required>
+          <option [value]="true">Active</option>
+          <option [value]="false">Inactive</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-sm btn-primary m-2">{{ isEditMode ? 'Save Changes' : 'Create' }}</button>&nbsp;&nbsp;
+      <button type="button" class="btn btn-sm btn-secondary m-2" (click)="cancelReward()">Cancel</button>
+    </form>
+  </div>
+
+  <!-----------------------Table---------------------->
+  <div class="col-sm-12">
+    <h3>Reward List</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Reward Name</th>
+          <th>Code</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reward of rewards">
+          <td class="sm-4">{{ reward.reward_name }}</td>
+          <td class="sm-3">{{ reward.code}}</td>
+          <td class="sm-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" (ngModelChange)="changeRewardStatus(reward)"
+                [(ngModel)]="reward.status">
+              <label class="form-check-label" for="status">{{ reward.status ? 'Active' : 'Inactive' }}</label>
+            </div>
+          </td>
+          <td class="sm-4">
+            <button class="btn btn-sm btn-warning" (click)="editReward(reward)">Edit</button>&nbsp;&nbsp;
+            <button class="btn btn-sm btn-danger" (click)="deleteReward(reward)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <button class="btn btn-warning w-25 m-2" (click)="addRewardForm()">Add</button>
+      &nbsp;&nbsp;
+      <button class="btn btn-warning w-25 m-2" routerLink="../admin-dashboard">Cancel</button>
+    </div>
+  </div>
+</div>
